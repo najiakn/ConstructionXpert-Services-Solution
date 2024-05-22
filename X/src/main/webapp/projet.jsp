@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: user
@@ -11,6 +12,26 @@
     <title>najiaaaaaan</title>
 </head>
 <body>
-<h1>chaima lfena</h1>
+<table>
+    <tr>
+        <td>Nom</td>
+        <td>Description</td>
+    <td>Date debut</td>
+        <td>Date fin</td>
+        <td>budget</td>
+    </tr>
+    <c:forEach items="${model.projets}" var="p">
+        <tr>
+            <td>${p.nom_projet}</td>
+
+
+        <td>${p.description_projet}</td>
+        <td>${p.date_debut}</td>
+        <td>${p.date_fin}</td>
+        <td>${p.budget}</td>
+            </tr>
+    </c:forEach>
+
+</table>
 </body>
 </html>
