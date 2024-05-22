@@ -12,10 +12,20 @@ public class projet {
     private float budget;
 
 
+
     // creation les constructeurs
     public projet(){};
     public projet(int id_projet, String nom_projet, String description_projet,Date date_debut, Date date_fin , float budget){
         this.id_projet=id_projet;
+        this.nom_projet=nom_projet;
+        this.description_projet=description_projet;
+        this.date_debut=date_debut;
+        this.date_fin=date_fin;
+        this.budget=budget;
+    }
+
+    public projet(String nom_projet, String description_projet,Date date_debut, Date date_fin , float budget){
+
         this.nom_projet=nom_projet;
         this.description_projet=description_projet;
         this.date_debut=date_debut;
@@ -53,10 +63,10 @@ public class projet {
         return  description_projet;
     }
     public Date getDate_debut(){
-        return  date_debut;
+        return date_debut;
     }
-    public  Date getDate_fin(){
-        return  date_fin;
+    public Date getDate_fin(){
+        return date_fin;
     }
     public  float getBudget(){
         return  budget;

@@ -9,7 +9,7 @@ public class SingletonConnection {
     static {
         try {
             Class.forName("org.postgresql.Driver");
-            connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/construction", "postgres", "0000");
+            connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/construction", "postgres", "1234");
         } catch (Exception e) {
             e.printStackTrace();
         }

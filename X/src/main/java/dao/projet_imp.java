@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import metier.projet;
-
+import  java.util.Date;
 public class projet_imp  implements  IprojetDao{
     private Connection connection;
 
@@ -17,7 +17,23 @@ public class projet_imp  implements  IprojetDao{
 
     @Override
     public projet ajouter(projet p) {
-        return null;
+        Connection connection = SingletonConnection.getConnection();
+        try {
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO projet (nom_projet,description,date_debut,date_fin,budget)VALUES(?,?,?,?,?)");
+            ps.setString(1, p.getNom_projet());
+            ps.setString(2, p.getDescription_projet());
+            ps.setDate(3, new java.sql.Date(p.getDate_debut().getTime()));
+            ps.setDate(4,new java.sql.Date(p.getDate_fin().getTime()));
+            ps.setFloat(5, p.getBudget());
+            ps.executeUpdate();
+
+            ps.close();
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return p;
     }
 
     @Override
@@ -27,13 +43,11 @@ public class projet_imp  implements  IprojetDao{
 
     @Override
     public List<projet> afficher() {
-        List<projet> projects = new ArrayList<>();
-        String sql = "SELECT * FROM projet";
-
-        try (Connection connection = SingletonConnection.getConnection();
-             PreparedStatement statement = connection.prepareStatement(sql)) {
-
-            ResultSet rs = statement.executeQuery();
+        List<projet> projets = new ArrayList<projet>();
+        Connection connection = SingletonConnection.getConnection();
+        try {
+            PreparedStatement ps = connection.prepareStatement("select * from projet");
+            ResultSet rs =ps.executeQuery();
 
             while (rs.next()) {
                 projet project = new projet();
@@ -43,16 +57,16 @@ public class projet_imp  implements  IprojetDao{
                 project.setDate_debut(rs.getDate("date_debut"));
 
                 project.setDate_fin(rs.getDate("date_fin"));
-              project.setBudget(rs.getFloat("budget"));
+                project.setBudget(rs.getFloat("budget"));
 
-                projects.add(project);
+                projets.add(project);
             }
 
         } catch (SQLException e) {
             System.err.println("Error fetching projects: " + e.getMessage());
         }
 
-        return projects;
+        return projets;
     }
 
     @Override
