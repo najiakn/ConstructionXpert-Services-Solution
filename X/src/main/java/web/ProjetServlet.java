@@ -27,7 +27,7 @@ public class ProjetServlet  extends HttpServlet {
         if(path.equals("/home")){
             request.getRequestDispatcher("index.jsp").forward(request,response);
         }
-        if(path.equals("/afficher")){
+       else if(path.equals("/afficher")){
             ProjetModel model = new ProjetModel();
             List<projet>projets=metier.afficher();
             model.setProjets(projets);
@@ -35,6 +35,11 @@ public class ProjetServlet  extends HttpServlet {
             request.getRequestDispatcher("projet.jsp").forward(request,response);
 
         }
-
+       else if(path.equals("/ajouter")){
+            request.getRequestDispatcher("ajouter.jsp").forward(request,response);
+        }
+       else{
+           response.sendError(response.SC_NOT_FOUND);
+        }
     }
 }

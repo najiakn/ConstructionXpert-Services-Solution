@@ -12,6 +12,7 @@
     <title>najiaaaaaan</title>
 </head>
 <body>
+<%@include file="header.jsp" %>
 <table>
     <tr>
         <td>Nom</td>
