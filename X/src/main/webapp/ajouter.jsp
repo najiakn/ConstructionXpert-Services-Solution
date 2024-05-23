@@ -12,6 +12,27 @@
 </head>
 <body>
 <h1>page ajouter</h1>
+<form action="ajouter_projet.do" method="post">
+    <label>Nom</label>
+    <input type="text" name="nom">
+<br><br>
+    <label>Description</label>
+    <input type="text" name="description">
+<br><br>
+    <label>Date_debut</label>
+    <input type="date" name="date_debut">
+<br>
+<br>
+    <label>Date_fin</label>
+    <input type="date" name="date_fin">
+<br>
+    <br>
+    <label>budget</label>
+    <input type="text" name="budget">
+
+<br><br>
+<button type="submit">Ajouter</button>
+</form>
 <a href="${pageContext.request.contextPath}/ajouter.jsp">pr</a>
 
 </body>

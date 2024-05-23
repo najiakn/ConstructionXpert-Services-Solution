@@ -11,4 +11,6 @@ public interface IprojetDao {
     public projet supprimer(int id);
 
 
+    projet getProjet(int id_projet);
+
 }

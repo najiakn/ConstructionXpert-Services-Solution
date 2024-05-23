@@ -75,7 +75,50 @@ public class projet_imp  implements  IprojetDao{
     }
 
     @Override
-    public projet supprimer(int id) {
+    public projet supprimer(int id_projet) {
+        Connection connection = SingletonConnection.getConnection();
+        try {
+            PreparedStatement ps = connection.prepareStatement("delete from projet where id_projet =?");
+            ps.setInt(1, id_projet);
+            ps.executeUpdate();
+
+            ps.close();
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
         return null;
+    }
+
+    @Override
+    public projet getProjet(int id_projet) {
+       projet p = null ;
+        Connection connection = SingletonConnection.getConnection();
+        try {
+            PreparedStatement ps = connection.prepareStatement("select * from projet where id_projet=?");
+            ps.setInt(1,id_projet);
+            ResultSet rs =ps.executeQuery();
+
+            if (rs.next()) {
+                p = new projet();
+                p.setId_projet(rs.getInt("id_projet"));
+                p.setNom_projet(rs.getString("nom_projet"));
+                p.setDescription_projet(rs.getString("description"));
+                p.setDate_debut(rs.getDate("date_debut"));
+
+                p.setDate_fin(rs.getDate("date_fin"));
+                p.setBudget(rs.getFloat("budget"));
+
+
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Error fetching projects: " + e.getMessage());
+        }
+
+        return p;
     }
 }

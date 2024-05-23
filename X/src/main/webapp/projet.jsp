@@ -13,16 +13,20 @@
 </head>
 <body>
 <%@include file="header.jsp" %>
-<table>
+<table border="1px solid red">
     <tr>
+        <td>id </td>
         <td>Nom</td>
         <td>Description</td>
     <td>Date debut</td>
         <td>Date fin</td>
         <td>budget</td>
+        <td>Supprimer</td>
+        <td>Modifier</td>
     </tr>
     <c:forEach items="${model.projets}" var="p">
         <tr>
+            <td>${p.id_projet}</td>
             <td>${p.nom_projet}</td>
 
 
@@ -30,7 +34,10 @@
         <td>${p.date_debut}</td>
         <td>${p.date_fin}</td>
         <td>${p.budget}</td>
-            </tr>
+            <td><a onclick="return confirm('etes vous sure?')" href="supprimer.do?id_projet=${p.id_projet}">Suprrimer</a> </td>
+            <td><a href="modifier.do?id_projet=${p.id_projet}">Modifier</a> </td>
+
+        </tr>
     </c:forEach>
 
 </table>
