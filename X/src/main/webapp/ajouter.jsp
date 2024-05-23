@@ -14,7 +14,7 @@
 <h1>page ajouter</h1>
 <form action="ajouter_projet.do" method="post">
     <label>Nom</label>
-    <input type="text" name="nom">
+    <input type="text" name="nom_projet">
 <br><br>
     <label>Description</label>
     <input type="text" name="description">

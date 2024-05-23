@@ -9,7 +9,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import metier.projet;
 
-import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -43,7 +42,7 @@ public class ProjetServlet  extends HttpServlet {
             request.getRequestDispatcher("ajouter.jsp").forward(request,response);
         }
        else if(path.equals("/ajouter_projet.do")&& (request.getMethod().equals("POST"))){
-           String nom=request.getParameter("nom");
+           String nom_projet =request.getParameter("nom_projet");
            String description= request.getParameter("description");
 
             Date date_debut = null;
@@ -56,28 +55,57 @@ public class ProjetServlet  extends HttpServlet {
                 e.printStackTrace();
                 // Handle the exception, e.g., setting default dates or returning an error response
             }
-         Float budget = Float.parseFloat(request.getParameter("budget"));
+             Float budget = Float.parseFloat(request.getParameter("budget"));
 
-          projet p= metier.ajouter( new projet(nom,description,date_debut,date_fin,budget));
-          request.setAttribute("projet" ,p);
-          request.getRequestDispatcher("confirmation.jsp").forward(request,response);
-        } else if (path.equals("/supprimer.do")) {
+             projet p= metier.ajouter( new projet(nom_projet,description,date_debut,date_fin,budget));
+             request.setAttribute("projet" ,p);
+             request.getRequestDispatcher("confirmation.jsp").forward(request,response);
+        }
+
+       else if (path.equals("/supprimer.do")) {
             int id_projet = Integer.parseInt(request.getParameter("id_projet"));
             metier.supprimer(id_projet);
            // request.getRequestDispatcher("projet.jsp");
             response.sendRedirect("afficher");
 
         }
+
         else if (path.equals("/modifier.do")) {
             int id_projet = Integer.parseInt(request.getParameter("id_projet"));
             projet p = metier.getProjet(id_projet);
-            // request.getRequestDispatcher("projet.jsp");
             request.setAttribute("projet",p);
-            request.getRequestDispatcher("modifier.jsp").forward(request,response);
 
-        } else{
-           response.sendError(response.SC_NOT_FOUND);
+            request.getRequestDispatcher("modifier.jsp").forward(request,response );
+
         }
+
+        else if(path.equals("/modifier_projet.do")&& (request.getMethod().equals("POST"))){
+            int id_projet = Integer.parseInt(request.getParameter("id_projet"));
+            String nom=request.getParameter("nom_projet");
+            String description= request.getParameter("description");
+
+            Date date_debut = null;
+            Date date_fin = null;
+            try {
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); // Adjust the date format according to your input format
+                date_debut = sdf.parse(request.getParameter("date_debut"));
+                date_fin = sdf.parse(request.getParameter("date_fin"));
+            } catch (ParseException e) {
+                e.printStackTrace();
+                // Handle the exception, e.g., setting default dates or returning an error response
+            }
+            Float budget = Float.parseFloat(request.getParameter("budget"));
+
+            projet p= new projet( nom,description,date_debut,date_fin,budget);
+            p.setId_projet(id_projet);
+            metier.modifier(p);
+            request.setAttribute("projet" ,p);
+            request.getRequestDispatcher("Afficher").forward(request,response);
+        }
+else{
+    response.sendError(response.SC_NOT_FOUND);
+        }
+
     }
 
     @Override

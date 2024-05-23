@@ -14,6 +14,10 @@
 <%@include file="header.jsp" %>
 <h1>page confirmation</h1>
 <div>
+    <label>Id :</label>
+    <label>${projet.id_projet}</label>
+</div>
+<div>
     <label>Nom :</label>
     <label>${projet.nom_projet}</label>
 </div>

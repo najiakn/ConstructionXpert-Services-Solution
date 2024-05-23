@@ -71,7 +71,24 @@ public class projet_imp  implements  IprojetDao{
 
     @Override
     public projet modifier(projet p) {
-        return null;
+        Connection connection = SingletonConnection.getConnection();
+        try {
+            PreparedStatement ps = connection.prepareStatement("update projet  set nom_projet=?,description=?,date_debut=?,date_fin=?,budget=? where id_projet=?");
+            ps.setString(1, p.getNom_projet());
+            ps.setString(2, p.getDescription_projet());
+            ps.setDate(3, new java.sql.Date(p.getDate_debut().getTime()));
+            ps.setDate(4,new java.sql.Date(p.getDate_fin().getTime()));
+            ps.setFloat(5, p.getBudget());
+            ps.setInt(6,p.getId_projet());
+            ps.executeUpdate();
+
+            ps.close();
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return p;
     }
 
     @Override
