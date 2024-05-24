@@ -1,0 +1,32 @@
+
+insert into tache(description,date_debut,date_fin,status,id_projet) values('tache2','20/11/2022','12/03/2003','a fair',21);
+---------------------------------------ADD constraint delete on cascade/update on cascade
+
+insert into tache(description,date_debut,date_fin,status,id_projet) values('descri23','20/11/2023','21/02/2001','a fair',23);
+
+drop table tache 
+
+//----------------------------trouver nom de constranit fk --------------------------
+SELECT
+    tc.constraint_name,
+    tc.table_name,
+    kcu.column_name,
+    ccu.table_name AS foreign_table_name,
+    ccu.column_name AS foreign_column_name
+FROM 
+    information_schema.table_constraints AS tc 
+    JOIN information_schema.key_column_usage AS kcu
+      ON tc.constraint_name = kcu.constraint_name
+    JOIN information_schema.constraint_column_usage AS ccu
+      ON ccu.constraint_name = tc.constraint_name
+WHERE tc.constraint_type = 'FOREIGN KEY' AND tc.table_name='tache';
+
+
+------------------------------------------------drop constraint fk ----------------------
+alter table tache drop constraint tache_id_projet_fkey
+--------------------------------------------------tester Fk
+select projet.nom_projet,tache.description from tache,projet where tache.id_projet=projet.id_projet
+
+--------------------------------------------------tester supprimer avec constrainte on cascade
+delete from projet where id_projet=23
+select * from tache 
