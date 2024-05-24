@@ -9,10 +9,20 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>najiaaaaaan</title>
+    <title>Page de Gestion</title>
+
 </head>
 <body>
 <%@include file="header.jsp" %>
+<div class="sidebar">
+    <h2>Menu de Gestion</h2>
+    <ul>
+        <li><a href="#gestion-projets">Gestion des Projets</a></li>
+        <li><a href="#gestion-taches">Gestion des Tâches</a></li>
+        <li><a href="#gestion-ressources">Gestion des Ressources</a></li>
+        <li><a href="#gestion-fournisseurs">Gestion des Fournisseurs</a></li>
+    </ul>
+</div>
 <table border="1px solid red">
     <tr>
         <td>id </td>
