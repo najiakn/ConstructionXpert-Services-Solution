@@ -23,6 +23,15 @@ public class tache {
         this.status=status;
         this.id_projet=id_projet;
     }
+    public  tache( String description, Date date_debut, Date date_fin ,  int id_projet,String status ){
+
+        this.description=description;
+        this.date_debut=date_debut;
+        this.date_fin=date_fin;
+        this.id_projet=id_projet;
+        this.status=status;
+
+    }
 
     // creation Getters et setters
 

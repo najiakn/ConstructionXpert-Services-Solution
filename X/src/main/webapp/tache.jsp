@@ -137,7 +137,7 @@ tr:nth-child(even) {
 </div>
 <div class="content">
     <h1>Gestion des Tache</h1>
-    <button class="btn-ajouter" onclick="window.location.href='ajouter.jsp'">Ajouter</button>
+    <button class="btn-ajouter" onclick="window.location.href='ajouter_tache.jsp'">Ajouter</button>
     <table>
         <thead>
         <tr>

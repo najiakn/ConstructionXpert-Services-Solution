@@ -96,17 +96,28 @@ public class ProjetServlet extends HttpServlet {
             model_tache.setTaches(taches);
             request.setAttribute("model_tache", model_tache);
             request.getRequestDispatcher("tache.jsp").forward(request, response);
-        }
-        
-        else {
+        } else if (path.equals("/ajouter_tache")) {
+            request.getRequestDispatcher("ajouter_tache.jsp").forward(request, response);
+        } else if (path.equals("/ajouter_tache.do") && (request.getMethod().equals("POST"))) {
+            String description = request.getParameter("description");
+
+            Date date_debut = null;
+            Date date_fin = null;
+            try {
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                date_debut = sdf.parse(request.getParameter("date_debut"));
+                date_fin = sdf.parse(request.getParameter("date_fin"));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            int id_projet = Integer.parseInt(request.getParameter("id_projet"));
+            String status = request.getParameter("status");
+            tache t = metier_tache.ajouter(new tache(description, date_debut, date_fin, id_projet, status));
+            request.setAttribute("tache", t);
+            request.getRequestDispatcher("config_tache.jsp").forward(request, response);
+        } else {
             response.sendError(HttpServletResponse.SC_NOT_FOUND);
         }
-
-
-
-
-        //--------------------------------------------------------Tache ajouter
-
     }
 
     @Override
