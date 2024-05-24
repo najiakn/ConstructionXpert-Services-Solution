@@ -100,7 +100,7 @@ public class ProjetServlet  extends HttpServlet {
             p.setId_projet(id_projet);
             metier.modifier(p);
             request.setAttribute("projet" ,p);
-            request.getRequestDispatcher("Afficher").forward(request,response);
+            response.sendRedirect("afficher");
         }
 else{
     response.sendError(response.SC_NOT_FOUND);

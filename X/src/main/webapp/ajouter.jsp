@@ -90,7 +90,6 @@
     </style>
 </head>
 <body>
-<%@include file="header.jsp" %>
 <div class="sidebar">
     <h2>Menu de Gestion</h2>
     <ul>
