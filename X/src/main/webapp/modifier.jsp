@@ -34,7 +34,7 @@
   <input type="text" name="budget" value="${projet.budget}">
 
   <br><br>
-  <button type="submit">Ajouter</button>
+  <button type="submit">Modifier</button>
 </form>
 <a href="${pageContext.request.contextPath}/ajouter.jsp">pr</a>
 

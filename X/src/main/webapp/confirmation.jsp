@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: user
@@ -8,37 +9,121 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Confirmation du Projet</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
+<style>
+    body {
+        display: flex;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background-color: #ffffff;
+    }
+
+    .sidebar {
+        width: 250px;
+        background-color: #f9f871; /* Jaune */
+        padding: 20px;
+        height: 100vh;
+        position: fixed;
+    }
+
+    .sidebar h2 {
+        color: #3c763d; /* Vert */
+        text-align: center;
+    }
+
+    .sidebar ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .sidebar ul li {
+        margin: 15px 0;
+    }
+
+    .sidebar ul li a {
+        color: #3c763d; /* Vert */
+        text-decoration: none;
+        font-size: 18px;
+    }
+
+    .sidebar ul li a:hover {
+        text-decoration: underline;
+    }
+
+    .content {
+        margin-left: 270px;
+        padding: 20px;
+        width: calc(100% - 270px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    h1 {
+        color: #3c763d; /* Vert */
+    }
+
+    .card {
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        max-width: 500px;
+        width: 100%;
+    }
+
+    .card div {
+        margin-bottom: 10px;
+    }
+
+    .card label {
+        font-weight: bold;
+        color: #3c763d; /* Vert */
+    }
+
+    .card span {
+        display: inline-block;
+        margin-left: 10px;
+    }
+</style>
 <body>
 <%@include file="header.jsp" %>
-<h1>page confirmation</h1>
-<div>
-    <label>Id :</label>
-    <label>${projet.id_projet}</label>
+<div class="sidebar">
+    <h2>Menu de Gestion</h2>
+    <ul>
+        <li><a href="afficher">Gestion des Projets</a></li>
+        <li><a href="gestion.jsp#gestion-taches">Gestion des Tâches</a></li>
+        <li><a href="gestion.jsp#gestion-ressources">Gestion des Ressources</a></li>
+        <li><a href="gestion.jsp#gestion-fournisseurs">Gestion des Fournisseurs</a></li>
+    </ul>
 </div>
-<div>
-    <label>Nom :</label>
-    <label>${projet.nom_projet}</label>
-</div>
-<div>
-    <label>Description :</label>
-    <label>${projet.description_projet}</label>
-</div>
-<div>
-    <label>Date_debut :</label>
-    <label>${projet.date_debut}</label>
-</div>
-<div>
-    <label>Date_fin :</label>
-    <label>${projet.date_fin}</label>
-</div>
-<div>
-    <label>Budget : </label>
-    <label>${projet.budget}</label>
-</div>
-<div>
-
+<div class="content">
+    <div class="card">
+        <div>
+            <label>Nom :</label>
+            <span>${projet.nom_projet}</span>
+        </div>
+        <div>
+            <label>Description :</label>
+            <span>${projet.description_projet}</span>
+        </div>
+        <div>
+            <label>Date de début :</label>
+            <span>${projet.date_debut}</span>
+        </div>
+        <div>
+            <label>Date de fin :</label>
+            <span>${projet.date_fin}</span>
+        </div>
+        <div>
+            <label>Budget :</label>
+            <span>${projet.budget}</span>
+        </div>
+    </div>
 </div>
 </body>
 </html>
