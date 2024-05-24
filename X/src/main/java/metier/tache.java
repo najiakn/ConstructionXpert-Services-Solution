@@ -7,7 +7,7 @@ public class tache {
 
 
     private  int id_tache;
-    private String description_tache;
+    private String description;
     private  Date date_debut;
     private Date date_fin;
     private String status;
@@ -15,9 +15,9 @@ public class tache {
     // creation les constructeurs
 
     public  tache(){};
-    public  tache(int id_tache, String description_tache, Date date_debut, Date date_fin , String status , int id_projet){
+    public  tache(int id_tache, String description, Date date_debut, Date date_fin , String status , int id_projet){
         this.id_tache=id_tache;
-        this.description_tache=description_tache;
+        this.description=description;
         this.date_debut=date_debut;
         this.date_fin=date_fin;
         this.status=status;
@@ -29,8 +29,8 @@ public class tache {
     public  void setId_tache(int id_tache){
         this.id_tache=id_tache;
     }
-    public  void  setDescription_tache(String description_tache){
-        this.description_tache=description_tache;
+    public  void  setDescription(String description){
+        this.description=description;
     }
     public void  setDate_debut(Date date_debut){
         this.date_debut=date_debut;
@@ -49,8 +49,8 @@ public class tache {
     public  int getId_tache(){
         return  id_tache;
     }
-    public  String getDescription_tache(){
-        return  description_tache;
+    public  String getDescription(){
+        return  description;
     }
     public  Date getDate_debut(){
         return  date_debut;
@@ -67,6 +67,6 @@ public class tache {
 
     @Override
     public  String toString(){
-        return  "Tache : "+id_tache+ " + description : "+description_tache +"  Date debut : "+ date_debut +"  Date_fin: "+date_fin+ "  +status "+status+ "  + id_projet "+id_tache +" ";
+        return  "Tache : "+id_tache+ " + description : "+description +"  Date debut : "+ date_debut +"  Date_fin: "+date_fin+ "  +status "+status+ "  + id_projet "+id_tache +" ";
     }
 }

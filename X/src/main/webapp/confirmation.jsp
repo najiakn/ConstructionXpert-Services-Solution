@@ -96,7 +96,7 @@
     <h2>Menu de Gestion</h2>
     <ul>
         <li><a href="afficher">Gestion des Projets</a></li>
-        <li><a href="gestion.jsp#gestion-taches">Gestion des Tâches</a></li>
+        <li><a href="home_tache">Gestion des Tâches</a></li>
         <li><a href="gestion.jsp#gestion-ressources">Gestion des Ressources</a></li>
         <li><a href="gestion.jsp#gestion-fournisseurs">Gestion des Fournisseurs</a></li>
     </ul>

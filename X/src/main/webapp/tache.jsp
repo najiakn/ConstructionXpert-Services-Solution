@@ -130,13 +130,13 @@ tr:nth-child(even) {
     <h2>Menu de Gestion</h2>
     <ul>
         <li><a href="afficher">Gestion des Projets</a></li>
-        <li><a href="#gestion-taches">Gestion des Tâches</a></li>
+        <li><a href="home_tache">Gestion des Tâches</a></li>
         <li><a href="#gestion-ressources">Gestion des Ressources</a></li>
         <li><a href="#gestion-fournisseurs">Gestion des Fournisseurs</a></li>
     </ul>
 </div>
 <div class="content">
-    <h1>Gestion des Projets</h1>
+    <h1>Gestion des Tache</h1>
     <button class="btn-ajouter" onclick="window.location.href='ajouter.jsp'">Ajouter</button>
     <table>
         <thead>
@@ -152,16 +152,18 @@ tr:nth-child(even) {
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${model.projets}" var="p">
+        <c:forEach items="${model_tache.taches}" var="t">
             <tr>
-                <td>${p.id_projet}</td>
-                <td>${p.nom_projet}</td>
-                <td>${p.description_projet}</td>
-                <td>${p.date_debut}</td>
-                <td>${p.date_fin}</td>
-                <td>${p.budget}</td>
+                <td>${t.id_tache}</td>
+                <td>${t.description}</td>
+
+                <td>${t.date_debut}</td>
+                <td>${t.date_fin}</td>
+                <td>${t.id_projet}</td>
+                <td>${t.status}</td>
+
                 <td><a class="btn-supprimer" onclick="return confirm('Êtes-vous sûr ?')" href="supprimer.do?id_projet=${p.id_projet}">Supprimer</a></td>
-                <td><a class="btn-modifier" href="modifier.do?id_projet=${p.id_projet}">Modifier</a></td>
+                <td><a class="btn-modifier" href="modifier.do?id=${t.id_tache}">Modifier</a></td>
             </tr>
         </c:forEach>
         </tbody>
