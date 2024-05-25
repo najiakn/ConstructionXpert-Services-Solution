@@ -114,9 +114,13 @@
         <label>id_projet</label><br>
         <input type="text" name="id_projet"><br><br>
 
+        <label for="status" > Status </label>
 
-        <label>status</label><br>
-        <input type="text" name="status"><br><br>
+        <select  id="status" name="status" required>
+            <option value="fair">fair</option>
+            <option value="on cours">on cours</option>
+            <option value="terminer">terminer</option>
+    </select>
 
         <button type="submit">Ajouter tache </button>
     </form>

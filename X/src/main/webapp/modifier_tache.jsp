@@ -172,8 +172,13 @@
             <div class="input-group">
 
                 <div class="input-row">
-                    <label for="status">Status</label>
-                    <input type="text" id="status" name="status" value="${tache.status}">
+                    <label for="status" > Status </label>
+
+                    <select  id="status" name="status" required>
+                        <option value="fair">fair</option>
+                        <option value="on cours">on cours</option>
+                        <option value="terminer">terminer</option>
+                    </select>
                 </div>
 
 
