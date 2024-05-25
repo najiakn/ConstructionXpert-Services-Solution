@@ -64,6 +64,7 @@ public class ProjetServlet extends HttpServlet {
             int id_projet = Integer.parseInt(request.getParameter("id_projet"));
             metier.supprimer(id_projet);
             response.sendRedirect("afficher");
+            //---------------------------------------------modifier tache
         } else if (path.equals("/modifier.do")) {
             int id_projet = Integer.parseInt(request.getParameter("id_projet"));
             projet p = metier.getProjet(id_projet);
@@ -90,12 +91,18 @@ public class ProjetServlet extends HttpServlet {
             metier.modifier(p);
             request.setAttribute("projet", p);
             response.sendRedirect("afficher");
+
+            //----------------------------Afficher tache
+
         } else if (path.equals("/home_tache")) {
             TacheModel model_tache = new TacheModel();
             List<tache> taches = metier_tache.afficher();
             model_tache.setTaches(taches);
             request.setAttribute("model_tache", model_tache);
             request.getRequestDispatcher("tache.jsp").forward(request, response);
+            //-----------------------Ajouter tache-------------------------------
+
+
         } else if (path.equals("/ajouter_tache")) {
             request.getRequestDispatcher("ajouter_tache.jsp").forward(request, response);
         } else if (path.equals("/ajouter_tache.do") && (request.getMethod().equals("POST"))) {
@@ -115,9 +122,52 @@ public class ProjetServlet extends HttpServlet {
             tache t = metier_tache.ajouter(new tache(description, date_debut, date_fin, id_projet, status));
             request.setAttribute("tache", t);
             request.getRequestDispatcher("config_tache.jsp").forward(request, response);
-        } else {
+        }
+        //---------------------------------supprimer tache
+        else if (path.equals("/supprimer_tache.do")) {
+            int id_tache = Integer.parseInt(request.getParameter("id_tache"));
+            metier_tache.supprimer(id_tache);
+            response.sendRedirect("home_tache");
+        }
+
+        //------------------modifier tache
+
+     else if (path.equals("/get_tache.do")) {
+        int id_tache = Integer.parseInt(request.getParameter("id_tache"));
+        tache t = metier_tache.getTaches(id_tache);
+        request.setAttribute("tache", t);
+        request.getRequestDispatcher("modifier_tache.jsp").forward(request, response);
+
+    } else if (path.equals("/modifier_tache.do") && (request.getMethod().equals("POST"))) {
+
+
+            int id_tache = Integer.parseInt(request.getParameter("id_tache"));
+            String description = request.getParameter("description");
+
+            Date date_debut = null;
+            Date date_fin = null;
+            try {
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                date_debut = sdf.parse(request.getParameter("date_debut"));
+                date_fin = sdf.parse(request.getParameter("date_fin"));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            int id_projet = Integer.parseInt(request.getParameter("id_projet"));
+            String status = request.getParameter("status");
+
+            tache t = new tache(description, date_debut, date_fin, id_projet, status);
+            t.setId_tache(id_tache);
+            metier_tache.modifier(t);
+            request.setAttribute("tache", t);
+            response.sendRedirect("home_tache");
+        }
+
+        //-----------------------------Error
+        else {
             response.sendError(HttpServletResponse.SC_NOT_FOUND);
         }
+
     }
 
     @Override

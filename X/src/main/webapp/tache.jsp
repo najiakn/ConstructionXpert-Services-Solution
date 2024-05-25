@@ -162,8 +162,8 @@ tr:nth-child(even) {
                 <td>${t.id_projet}</td>
                 <td>${t.status}</td>
 
-                <td><a class="btn-supprimer" onclick="return confirm('Êtes-vous sûr ?')" href="supprimer.do?id_projet=${p.id_projet}">Supprimer</a></td>
-                <td><a class="btn-modifier" href="modifier.do?id=${t.id_tache}">Modifier</a></td>
+                <td><a class="btn-supprimer" onclick="return confirm('Êtes-vous sûr ?')" href="supprimer_tache.do?id_tache=${t.id_tache}">Supprimer</a></td>
+                <td><a class="btn-modifier" href="get_tache.do?id_tache=${t.id_tache}">Modifier</a></td>
             </tr>
         </c:forEach>
         </tbody>
