@@ -73,6 +73,8 @@ public class fournisseur_imp  implements  IfournisseurDao{
             ps.setString(1, f.getNom());
             ps.setString(2, f.getMail());
             ps.setString(3, f.getTelephone());
+            ps.setInt(4,f.getIdf());
+
             ps.executeUpdate();
 
             ps.close();

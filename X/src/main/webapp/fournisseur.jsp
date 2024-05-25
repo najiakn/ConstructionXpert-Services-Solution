@@ -157,8 +157,8 @@ tr:nth-child(even) {
                 <td>${f.nom}</td>
                 <td>${f.mail}</td>
                 <td>${f.telephone}</td>
-                <td><a class="btn-supprimer" onclick="return confirm('Êtes-vous sûr ?')" href="supprimer.do?id_projet=${p.id_projet}">Supprimer</a></td>
-                <td><a class="btn-modifier" href="modifier.do?id_projet=${p.id_projet}">Modifier</a></td>
+                <td><a class="btn-supprimer" onclick="return confirm('Êtes-vous sûr ?')" href="supprimer_fournisseur.do?idf=${f.idf}">Supprimer</a></td>
+                <td><a class="btn-modifier" href="modifier_f.do?idf=${f.idf}">Modifier</a></td>
             </tr>
         </c:forEach>
         </tbody>

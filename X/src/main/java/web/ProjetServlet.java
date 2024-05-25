@@ -182,6 +182,33 @@ public class ProjetServlet extends HttpServlet {
             fournisseur f = metier_fournisseur.ajouter(new fournisseur(nom, mail, tele));
             request.setAttribute("fournisseur", f);
             request.getRequestDispatcher("confg_fournisseur.jsp").forward(request, response);
+
+            //-----------------------modifier fournisseur-------------------
+
+        } else if (path.equals("/modifier_f.do")) {
+            int idf = Integer.parseInt(request.getParameter("idf"));
+            fournisseur f= metier_fournisseur.getFournisseur(idf);
+            request.setAttribute("fournisseur", f);
+            request.getRequestDispatcher("modifier_fourniseur.jsp").forward(request, response);
+        } else if (path.equals("/modifier_fournisseur.do") && (request.getMethod().equals("POST"))) {
+            int idf = Integer.parseInt(request.getParameter("idf"));
+            String nom = request.getParameter("nom");
+            String mail = request.getParameter("mail");
+            String tele = request.getParameter("tele");
+
+            fournisseur f = new fournisseur(nom, mail, tele);
+            f.setIdf(idf);
+            metier_fournisseur.modifier(f);
+            request.setAttribute("fournisseur", f);
+            response.sendRedirect("home_fournisseur");
+        }
+            //-----------------------Supprimer fournisseur-------------------
+  else if (path.equals("/supprimer_fournisseur.do")) {
+                int idf = Integer.parseInt(request.getParameter("idf"));
+                metier_fournisseur.supprimer(idf);
+                response.sendRedirect("home_fournisseur");
+
+
             //-----------------------------Error
         }
         else {
