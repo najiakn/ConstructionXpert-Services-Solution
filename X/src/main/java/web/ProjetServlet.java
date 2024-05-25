@@ -40,6 +40,7 @@ public class ProjetServlet extends HttpServlet {
             model.setProjets(projets);
             request.setAttribute("model", model);
             request.getRequestDispatcher("projet.jsp").forward(request, response);
+            //----------------------------ajouter projet
         } else if (path.equals("/ajouter")) {
             request.getRequestDispatcher("ajouter.jsp").forward(request, response);
         } else if (path.equals("/ajouter_projet.do") && (request.getMethod().equals("POST"))) {
@@ -169,8 +170,20 @@ public class ProjetServlet extends HttpServlet {
             request.getRequestDispatcher("fournisseur.jsp").forward(request, response);
         }
         //----------------------------------------------------Ajouter fournisseur
+        else if (path.equals("/ajouter_fournisseur")) {
+            request.getRequestDispatcher("ajouter_fournisseur.jsp").forward(request, response);
+        } else if (path.equals("/ajouter_fournisseur.do") && (request.getMethod().equals("POST"))) {
+            String nom = request.getParameter("nom");
+            String mail = request.getParameter("mail");
 
-        //-----------------------------Error
+
+            String tele = request.getParameter("tele");
+
+            fournisseur f = metier_fournisseur.ajouter(new fournisseur(nom, mail, tele));
+            request.setAttribute("fournisseur", f);
+            request.getRequestDispatcher("confg_fournisseur.jsp").forward(request, response);
+            //-----------------------------Error
+        }
         else {
             response.sendError(HttpServletResponse.SC_NOT_FOUND);
         }
