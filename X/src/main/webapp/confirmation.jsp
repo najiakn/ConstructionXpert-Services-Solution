@@ -98,7 +98,7 @@
         <li><a href="afficher">Gestion des Projets</a></li>
         <li><a href="home_tache">Gestion des Tâches</a></li>
         <li><a href="gestion.jsp#gestion-ressources">Gestion des Ressources</a></li>
-        <li><a href="gestion.jsp#gestion-fournisseurs">Gestion des Fournisseurs</a></li>
+        <li><a href="home_fournisseur">Gestion des Fournisseurs</a></li>
     </ul>
 </div>
 <div class="content">

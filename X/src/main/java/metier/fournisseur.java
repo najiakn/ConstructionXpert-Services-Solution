@@ -17,6 +17,13 @@ public class fournisseur {
         this.telephone=telephone;
     }
 
+    public  fournisseur( String nom , String mail, String telephone){
+
+        this.nom=nom;
+        this.mail=mail;
+        this.telephone=telephone;
+    }
+
     // creation Getters et setters
 
     public void  setIdf(int idf){

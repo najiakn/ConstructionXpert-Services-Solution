@@ -132,7 +132,7 @@ tr:nth-child(even) {
         <li><a href="afficher">Gestion des Projets</a></li>
         <li><a href="home_tache">Gestion des Tâches</a></li>
         <li><a href="#gestion-ressources">Gestion des Ressources</a></li>
-        <li><a href="#gestion-fournisseurs">Gestion des Fournisseurs</a></li>
+        <li><a href="home_fournisseur">Gestion des Fournisseurs</a></li>
     </ul>
 </div>
 <div class="content">

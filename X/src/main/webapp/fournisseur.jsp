@@ -131,35 +131,32 @@ tr:nth-child(even) {
     <ul>
         <li><a href="afficher">Gestion des Projets</a></li>
         <li><a href="home_tache">Gestion des Tâches</a></li>
-        <li><a href="#gestion-ressources">Gestion des Ressources</a></li>
+        <li><a href="home_fournisseur">Gestion des Ressources</a></li>
         <li><a href="home_fournisseur">Gestion des Fournisseurs</a></li>
     </ul>
 </div>
 <div class="content">
-    <h1>Gestion des Projets</h1>
+    <h1>Gestion des fournisseurs</h1>
     <button class="btn-ajouter" onclick="window.location.href='ajouter.jsp'">Ajouter</button>
     <table>
         <thead>
         <tr>
             <th>ID</th>
             <th>Nom</th>
-            <th>Description</th>
-            <th>Date Début</th>
-            <th>Date Fin</th>
-            <th>Budget</th>
+
+            <th>mail</th>
+            <th>Telephone</th>
             <th>Supprimer</th>
             <th>Modifier</th>
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${model.projets}" var="p">
+        <c:forEach items="${model_fournisseur.fournisseurs}" var="f">
             <tr>
-                <td>${p.id_projet}</td>
-                <td>${p.nom_projet}</td>
-                <td>${p.description_projet}</td>
-                <td>${p.date_debut}</td>
-                <td>${p.date_fin}</td>
-                <td>${p.budget}</td>
+                <td>${f.idf}</td>
+                <td>${f.nom}</td>
+                <td>${f.mail}</td>
+                <td>${f.telephone}</td>
                 <td><a class="btn-supprimer" onclick="return confirm('Êtes-vous sûr ?')" href="supprimer.do?id_projet=${p.id_projet}">Supprimer</a></td>
                 <td><a class="btn-modifier" href="modifier.do?id_projet=${p.id_projet}">Modifier</a></td>
             </tr>

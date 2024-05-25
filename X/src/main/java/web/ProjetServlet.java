@@ -1,14 +1,12 @@
 package web;
 
-import dao.IprojetDao;
-import dao.itacheDao;
-import dao.projet_imp;
-import dao.tache_imp; // Importer l'implémentation de itacheDao
+import dao.*;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import metier.fournisseur;
 import metier.projet;
 import metier.tache;
 
@@ -22,11 +20,13 @@ import java.util.List;
 public class ProjetServlet extends HttpServlet {
     private IprojetDao metier;
     private itacheDao metier_tache;
+    private IfournisseurDao metier_fournisseur;
 
     @Override
     public void init() throws ServletException {
         metier = new projet_imp();
         metier_tache = new tache_imp(); // Initialiser metier_tache
+        metier_fournisseur = new fournisseur_imp();
     }
 
     @Override
@@ -161,9 +161,14 @@ public class ProjetServlet extends HttpServlet {
             request.setAttribute("tache", t);
             response.sendRedirect("home_tache");
 
-            //----------------------------Afficher tache
-
+        } else if (path.equals("/home_fournisseur")) {
+            fournisseurModel model_fournisseur = new fournisseurModel();
+            List<fournisseur> fournisseurs = metier_fournisseur.afficher();
+                model_fournisseur.setFournisseurs(fournisseurs);
+            request.setAttribute("model_fournisseur", model_fournisseur);
+            request.getRequestDispatcher("fournisseur.jsp").forward(request, response);
         }
+        //----------------------------------------------------Ajouter fournisseur
 
         //-----------------------------Error
         else {
