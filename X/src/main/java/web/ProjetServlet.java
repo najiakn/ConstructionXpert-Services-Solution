@@ -64,7 +64,7 @@ public class ProjetServlet extends HttpServlet {
             int id_projet = Integer.parseInt(request.getParameter("id_projet"));
             metier.supprimer(id_projet);
             response.sendRedirect("afficher");
-            //---------------------------------------------modifier tache
+            //---------------------------------------------modifier projet
         } else if (path.equals("/modifier.do")) {
             int id_projet = Integer.parseInt(request.getParameter("id_projet"));
             projet p = metier.getProjet(id_projet);
@@ -117,9 +117,11 @@ public class ProjetServlet extends HttpServlet {
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-            int id_projet = Integer.parseInt(request.getParameter("id_projet"));
             String status = request.getParameter("status");
-            tache t = metier_tache.ajouter(new tache(description, date_debut, date_fin, id_projet, status));
+            int id_projet = Integer.parseInt(request.getParameter("id_projet"));
+
+            //------------------------------
+            tache t = metier_tache.ajouter(new tache(description, date_debut, date_fin,status, id_projet));
             request.setAttribute("tache", t);
             request.getRequestDispatcher("config_tache.jsp").forward(request, response);
         }
@@ -132,15 +134,12 @@ public class ProjetServlet extends HttpServlet {
 
         //------------------modifier tache
 
-     else if (path.equals("/get_tache.do")) {
-        int id_tache = Integer.parseInt(request.getParameter("id_tache"));
-        tache t = metier_tache.getTaches(id_tache);
-        request.setAttribute("tache", t);
-        request.getRequestDispatcher("modifier_tache.jsp").forward(request, response);
-
-    } else if (path.equals("/modifier_tache.do") && (request.getMethod().equals("POST"))) {
-
-
+        else if (path.equals("/modifier_t.do")) {
+            int id_tache = Integer.parseInt(request.getParameter("id_tache"));
+          tache t = metier_tache.getTaches(id_tache);
+            request.setAttribute("tache", t);
+            request.getRequestDispatcher("modifier_tache.jsp").forward(request, response);
+        } else if (path.equals("/modifier_tache.do") && (request.getMethod().equals("POST"))) {
             int id_tache = Integer.parseInt(request.getParameter("id_tache"));
             String description = request.getParameter("description");
 
@@ -153,14 +152,17 @@ public class ProjetServlet extends HttpServlet {
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-            int id_projet = Integer.parseInt(request.getParameter("id_projet"));
             String status = request.getParameter("status");
+            int id_projet = Integer.parseInt(request.getParameter("id_projet"));
 
-            tache t = new tache(description, date_debut, date_fin, id_projet, status);
+            tache  t = new tache(description, date_debut, date_fin, status,id_projet);
             t.setId_tache(id_tache);
             metier_tache.modifier(t);
             request.setAttribute("tache", t);
             response.sendRedirect("home_tache");
+
+            //----------------------------Afficher tache
+
         }
 
         //-----------------------------Error

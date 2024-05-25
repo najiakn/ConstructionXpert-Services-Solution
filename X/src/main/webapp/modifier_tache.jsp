@@ -173,7 +173,7 @@
 
                 <div class="input-row">
                     <label for="status">Status</label>
-                    <input type="text" id="status" name="budget" value="${tache.status}">
+                    <input type="text" id="status" name="status" value="${tache.status}">
                 </div>
 
 

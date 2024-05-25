@@ -145,9 +145,11 @@ tr:nth-child(even) {
             <th>description</th>
             <th>date_debut</th>
             <th>Date fin</th>
-            <th>id_projet</th>
             <th>status</th>
+
+            <th>id_projet</th>
             <th>Supprimer</th>
+
             <th>Modifier</th>
         </tr>
         </thead>
@@ -159,11 +161,12 @@ tr:nth-child(even) {
 
                 <td>${t.date_debut}</td>
                 <td>${t.date_fin}</td>
-                <td>${t.id_projet}</td>
                 <td>${t.status}</td>
 
+                <td>${t.id_projet}</td>
+
                 <td><a class="btn-supprimer" onclick="return confirm('Êtes-vous sûr ?')" href="supprimer_tache.do?id_tache=${t.id_tache}">Supprimer</a></td>
-                <td><a class="btn-modifier" href="get_tache.do?id_tache=${t.id_tache}">Modifier</a></td>
+                <td><a class="btn-modifier" href="modifier_t.do?id_tache=${t.id_tache}">Modifier</a></td>
             </tr>
         </c:forEach>
         </tbody>

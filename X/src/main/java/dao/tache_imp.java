@@ -71,12 +71,14 @@ public class tache_imp  implements itacheDao{
     public tache modifier(tache t) {
         Connection connection = SingletonConnection.getConnection();
         try {
-            PreparedStatement ps = connection.prepareStatement("update tache  set description=?,date_debut=?,date_fin=?,id_projet=?,statut=? where id_tache=?");
-            ps.setString(1, t.getDescription());
+            PreparedStatement ps = connection.prepareStatement("update tache  set description=?,date_debut=?,date_fin=?,status=?,id_projet=? where id_tache=?");
+            ps.setString(1,t.getDescription());
+
             ps.setDate(2, new java.sql.Date(t.getDate_debut().getTime()));
             ps.setDate(3,new java.sql.Date(t.getDate_fin().getTime()));
             ps.setString(4, t.getStatus());
             ps.setInt(5,t.getId_projet());
+            ps.setInt(6,t.getId_tache());
             ps.executeUpdate();
 
             ps.close();
@@ -126,8 +128,8 @@ public class tache_imp  implements itacheDao{
                 t.setDate_debut(rs.getDate("date_debut"));
 
                 t.setDate_fin(rs.getDate("date_fin"));
-                t.setId_projet(rs.getInt("id_projet"));
                 t.setStatus(rs.getString("status"));
+                t.setId_projet(rs.getInt("id_projet"));
 
 
 
