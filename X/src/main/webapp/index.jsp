@@ -1,4 +1,3 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,15 +14,14 @@
         }
 
         header {
-            background-color: #333;
-            padding: 10px 0;
+            background-color: #ed9bae;
+            padding: 10px 20px;
         }
 
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 20px;
         }
 
         .logo img {
@@ -49,7 +47,41 @@
         }
 
         nav ul li a:hover {
-            background-color: #575757;
+            background-color: rgba(205, 0, 102, 0.97);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 4px 0;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                width: 100%;
+                display: none;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+                text-align: center;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            nav ul.showing {
+                display: flex;
+            }
         }
 
         section {
@@ -166,9 +198,14 @@
         <div class="logo">
             <img src="https://up6.cc/2024/05/171654192888561.png" alt="Logo de Mon Site">
         </div>
-        <ul>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul id="menu">
             <li><a href="#home">Home</a></li>
-            <li><a href="#apropos">À Propos</a></li>
+            <li><a href="#apropos">A Propos</a></li>
             <li><a href="#contact">Contact</a></li>
             <li><a href="afficher">Connexion</a></li> <!-- Nouveau lien pour la page JSP -->
         </ul>
@@ -179,26 +216,26 @@
 
 <section id="apropos">
     <div class="container">
-        <h1>À Propos de Notre Société de Construction</h1>
-        <p>Fondée en 1990, notre société de construction a plus de 30 ans d'expérience dans la réalisation de projets résidentiels, commerciaux et industriels. Nous sommes fiers de notre engagement envers la qualité, la sécurité et la satisfaction de nos clients.</p>
-        <p>Notre équipe d'experts travaille en étroite collaboration avec nos clients pour assurer que chaque projet est réalisé selon les normes les plus élevées et respecte les délais et les budgets établis.</p>
+        <h1 style="color: rgba(205, 0, 102, 0.97)">A Propos de Notre Societe de Construction</h1>
+        <p>Fondee en 1990, notre societe& de construction a plus de 30 ans d'experience dans la realisation de projets residentiels, commerciaux et industriels. Nous sommes fiers de notre engagement envers la qualite, la securite et la satisfaction de nos clients.</p>
+        <p>Notre equipe d'experts travaille en etroite collaboration avec nos clients pour assurer que chaque projet est realise selon les normes les plus elevees et respecte les delais et les budgets etablis.</p>
         <div class="info">
             <div>
                 <img src="https://mrkzgulfup.com/uploads/17167411014621.png" alt="Construction Image">
-                <h2>Nos Services</h2>
-                <p>Nous offrons une gamme complète de services de construction, y compris:</p>
+                <h2 style="color: rgba(205, 0, 102, 0.97)">Nos Services</h2>
+                <p>Nous offrons une gamme complete de services de construction, y compris:</p>
                 <ul>
-                    <li>Construction résidentielle</li>
+                    <li>Construction residentielle</li>
                     <li>Construction commerciale</li>
-                    <li>Rénovations et extensions</li>
+                    <li>Renovations et extensions</li>
                     <li>Gestion de projet</li>
                     <li>Consultation en construction</li>
                 </ul>
             </div>
             <div>
                 <img src="https://mrkzgulfup.com/uploads/171674127736371.jpg" alt="Team Image">
-                <h2>Notre Équipe</h2>
-                <p>Notre équipe est composée de professionnels hautement qualifiés, y compris des ingénieurs, des architectes, des gestionnaires de projet et des ouvriers spécialisés. Nous sommes dédiés à fournir des solutions innovantes et durables pour tous vos besoins en construction.</p>
+                <h2 style="color: rgba(205, 0, 102, 0.97)">Notre Équipe</h2>
+                <p>Notre equipe est composee de professionnels hautement qualifies, y compris des ingenieurs, des architectes, des gestionnaires de projet et des ouvriers spécialises. Nous sommes dedies à fournir des solutions innovantes et durables pour tous vos besoins en construction.</p>
             </div>
         </div>
     </div>
@@ -214,7 +251,7 @@
             </div>
             <div>
                 <i class="fas fa-phone"></i>
-                <p>Téléphone : +33 1 23 45 67 89</p>
+                <p>Telephone : +212 23 45 67 89</p>
             </div>
             <div>
                 <i class="fas fa-envelope"></i>
@@ -227,6 +264,13 @@
         </div>
     </div>
 </section>
+
+<script>
+    function toggleMenu() {
+        const menu = document.getElementById('menu');
+        menu.classList.toggle('showing');
+    }
+</script>
 
 </body>
 </html>
