@@ -5,28 +5,6 @@
   <title>Modifier Projet</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-    .input-group {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 20px;
-    }
-
-    .input-row {
-      flex: 1;
-      margin-right: 10px;
-    }
-
-    .input-row:last-child {
-      margin-right: 0;
-    }
-
-    .input-group label {
-      display: block;
-    }
-
-    .input-group input {
-      width: 100%;
-    }
     /* Reset CSS */
     * {
       margin: 0;
@@ -39,34 +17,40 @@
       display: flex;
       font-family: Arial, sans-serif;
       background-color: #ffffff;
+      margin: 0; /* Ajout pour annuler la marge par défaut */
     }
 
     /* Sidebar Styles */
     .sidebar {
       width: 250px;
-      background-color: #f9f871; /* Jaune */
+      background-color: #ed9bae; /* Jaune */
       padding: 20px;
       height: 100vh;
     }
 
     .sidebar h2 {
-      color: #3c763d; /* Vert */
+      color: #c30069; /* Vert */
       text-align: center;
+      margin-bottom: 30px;
     }
 
     .sidebar ul {
       list-style-type: none;
       padding: 0;
+      margin: 0; /* Ajout pour annuler la marge par défaut */
     }
 
     .sidebar ul li {
       margin: 15px 0;
+      text-align: center;
+      font-size: 20px;
+      font-weight: bold;
     }
 
     .sidebar ul li a {
-      color: #3c763d; /* Vert */
+      color: white; /* Vert */
       text-decoration: none;
-      font-size: 18px;
+      font-size: 16px;
     }
 
     .sidebar ul li a:hover {
@@ -75,15 +59,16 @@
 
     /* Content Styles */
     .content {
-      margin-left: 270px; /* Sidebar width + some margin */
       padding: 20px;
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start; /* Modifié pour aligner le contenu en haut */
+      flex-grow: 1; /* Ajout pour permettre à la section de prendre autant d'espace que possible */
     }
 
     h1 {
-      color: #3c763d; /* Vert */
+      color: #c30069; /* Vert */
+      text-align: center;
     }
 
     /* Card Styles */
@@ -103,7 +88,7 @@
 
     .card label {
       font-weight: bold;
-      color: #3c763d; /* Vert */
+      color: #c30069; /* Vert */
     }
 
     .card input[type="text"],
@@ -116,7 +101,7 @@
     }
 
     button {
-      background-color: #3c763d; /* Vert */
+      background-color: #c30069; /* Vert */
       color: #ffffff;
       padding: 10px 20px;
       border: none;
@@ -125,7 +110,7 @@
     }
 
     button:hover {
-      background-color: #2b542c;
+      background-color: #a60051; /* Vert plus foncé */
     }
 
   </style>
@@ -133,8 +118,8 @@
 <body>
 
 <div class="sidebar">
-                                                                                                                             <ul>
-    <li><a href="afficher">Gestion des Projets</a></li>
+  <ul>
+    <li style="background-color: #c30069;width: 100%"><a href="afficher">Gestion des Projets</a></li>
     <li><a href="home_tache">Gestion des Tâches</a></li>
     <li><a href="afficher_ressource">Gestion des Ressources</a></li>
     <li><a href="home_fournisseur">Gestion des Fournisseurs</a></li>
@@ -142,7 +127,6 @@
 </div>
 
 <div class="content">
-  <h1>Modifier Projet</h1>
   <div class="card">
     <form action="modifier_projet.do" method="post">
       <div class="input-group">
@@ -178,7 +162,7 @@
         </div>
       </div>
 
-      <button type="submit"  onclick="window.location.href='afficher'">Modifier</button>
+      <button type="submit" onclick="window.location.href='afficher'">Modifier</button>
     </form>
   </div>
 </div>

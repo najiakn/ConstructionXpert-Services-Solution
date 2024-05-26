@@ -2,31 +2,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Modifier Projet</title>
+    <title>Modifier Tâche</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        .input-group {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-
-        .input-row {
-            flex: 1;
-            margin-right: 10px;
-        }
-
-        .input-row:last-child {
-            margin-right: 0;
-        }
-
-        .input-group label {
-            display: block;
-        }
-
-        .input-group input {
-            width: 100%;
-        }
         /* Reset CSS */
         * {
             margin: 0;
@@ -39,34 +17,40 @@
             display: flex;
             font-family: Arial, sans-serif;
             background-color: #ffffff;
+            margin: 0; /* Ajout pour annuler la marge par défaut */
         }
 
         /* Sidebar Styles */
         .sidebar {
             width: 250px;
-            background-color: #f9f871; /* Jaune */
+            background-color: #ed9bae; /* Jaune */
             padding: 20px;
             height: 100vh;
         }
 
         .sidebar h2 {
-            color: #3c763d; /* Vert */
+            color: #c30069; /* Vert */
             text-align: center;
+            margin-bottom: 30px;
         }
 
         .sidebar ul {
             list-style-type: none;
             padding: 0;
+            margin: 0; /* Ajout pour annuler la marge par défaut */
         }
 
         .sidebar ul li {
             margin: 15px 0;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
         }
 
         .sidebar ul li a {
-            color: #3c763d; /* Vert */
+            color: white; /* Vert */
             text-decoration: none;
-            font-size: 18px;
+            font-size: 16px;
         }
 
         .sidebar ul li a:hover {
@@ -75,15 +59,18 @@
 
         /* Content Styles */
         .content {
-            margin-left: 270px; /* Sidebar width + some margin */
             padding: 20px;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start; /* Modifié pour aligner le contenu en haut */
+            flex-grow: 1; /* Ajout pour permettre à la section de prendre autant d'espace que possible */
         }
 
         h1 {
-            color: #3c763d; /* Vert */
+            color: #c30069; /* Vert */
+            text-align: center;
+            margin: 30px;
+            margin-top: 100px;
         }
 
         /* Card Styles */
@@ -103,11 +90,12 @@
 
         .card label {
             font-weight: bold;
-            color: #3c763d; /* Vert */
+            color: #c30069; /* Vert */
         }
 
         .card input[type="text"],
-        .card input[type="date"] {
+        .card input[type="date"],
+        .card select {
             width: calc(100% - 20px);
             padding: 10px;
             margin: 10px 0;
@@ -116,7 +104,7 @@
         }
 
         button {
-            background-color: #3c763d; /* Vert */
+            background-color: #c30069; /* Vert */
             color: #ffffff;
             padding: 10px 20px;
             border: none;
@@ -125,7 +113,7 @@
         }
 
         button:hover {
-            background-color: #2b542c;
+            background-color: #a60051; /* Vert plus foncé */
         }
 
     </style>
@@ -142,7 +130,7 @@
 </div>
 
 <div class="content">
-    <h1>Modifier Tache</h1>
+    <h1>Modifier Tâche</h1>
     <div class="card">
         <form action="modifier_tache.do" method="post">
             <div class="input-group">
@@ -150,7 +138,7 @@
                     <label for="id_tache">ID</label>
                     <input type="text" id="id_tache" name="id_tache" value="${tache.id_tache}" readonly>
                 </div>
-//
+
                 <div class="input-row">
                     <label for="description">Description</label>
                     <input type="text" id="description" name="description" value="${tache.description}">
@@ -164,31 +152,29 @@
                     <input type="date" id="date_debut" name="date_debut" value="${tache.date_debut}">
                 </div>
                 <div class="input-row">
-                <label for="date_fin">Date de fin</label>
-                <input type="date" id="date_fin" name="date_fin" value="${tache.date_fin}">
-            </div>
+                    <label for="date_fin">Date de fin</label>
+                    <input type="date" id="date_fin" name="date_fin" value="${tache.date_fin}">
+                </div>
             </div>
 
             <div class="input-group">
 
                 <div class="input-row">
-                    <label for="status" > Status </label>
-
-                    <select  id="status" name="status" required>
-                        <option value="fair">fair</option>
-                        <option value="on cours">on cours</option>
-                        <option value="terminer">terminer</option>
+                    <label for="status">Statut</label>
+                    <select id="status" name="status" required>
+                        <option value="fair">Fair</option>
+                        <option value="en cours">En cours</option>
+                        <option value="terminé">Terminé</option>
                     </select>
                 </div>
 
-
                 <div class="input-row">
-                    <label for="id_projet">id_projet</label>
+                    <label for="id_projet">ID Projet</label>
                     <input type="text" id="id_projet" name="id_projet" value="${tache.id_projet}">
                 </div>
             </div>
 
-            <button type="submit"  onclick="window.location.href='home_tache'">Modifier</button>
+            <button type="submit" onclick="window.location.href='home_tache'">Modifier</button>
         </form>
     </div>
 </div>

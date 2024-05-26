@@ -20,30 +20,36 @@
 
         .sidebar {
             width: 250px;
-            background-color: #f9f871; /* Jaune */
+            background-color: #ed9bae; /* Jaune */
             padding: 20px;
             height: 100vh;
             position: fixed;
+            overflow-y: auto;
         }
 
         .sidebar h2 {
-            color: #3c763d; /* Vert */
+            color: #c30069; /* Vert */
             text-align: center;
+            margin-bottom: 30px;
         }
 
         .sidebar ul {
+            margin-top: 60px;
             list-style-type: none;
             padding: 0;
         }
 
         .sidebar ul li {
             margin: 15px 0;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
         }
 
         .sidebar ul li a {
-            color: #3c763d; /* Vert */
+            color: white; /* Vert */
             text-decoration: none;
-            font-size: 18px;
+            font-size: 16px;
         }
 
         .sidebar ul li a:hover {
@@ -57,11 +63,12 @@
         }
 
         h1 {
-            color: #3c763d; /* Vert */
+            color: #c30069; /* Vert */
+            text-align: center;
         }
 
         form label {
-            color: #3c763d; /* Vert */
+            color: #c30069; /* Vert */
             font-weight: bold;
         }
 
@@ -74,34 +81,42 @@
             border-radius: 5px;
         }
 
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
         button {
-            background-color: #3c763d; /* Vert */
-            color: #ffffff;
+            background-color: rgba(205, 0, 102, 0.97); /* Vert */
+            color: white;
             padding: 10px 20px;
+            margin: 20px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
         }
 
         button:hover {
-            background-color: #2b542c;
+            background-color: rgba(85, 0, 42, 0.97);
         }
     </style>
 </head>
 <body>
 <div class="sidebar">
-    <h2>Menu de Gestion</h2>
+    <h2 style="color: #c30069;margin-top: 40px">Menu de Gestion</h2>
     <ul>
-        <li><a href="afficher">Gestion des Projets</a></li>
-        <li><a href="home_tache">Gestion des Tâches</a></li>
+        <li ><a href="afficher">Gestion des Projets</a></li>
+        <li style="background-color: #c30069;width: 100%"> <a href="home_tache">Gestion des Tâches</a></li>
         <li><a href="afficher_ressource">Gestion des Ressources</a></li>
         <li><a href="home_fournisseur">Gestion des Fournisseurs</a></li>
     </ul>
 </div>
 <div class="content">
-    <h1>Ajouter une tache </h1>
-    <form action="ajouter_tache.do" method="post">
-
+    <h1 style="color: #c30069">Ajouter une tache</h1>
+    <form action="ajouter_tache.do" method="post" style="margin: 20px">
         <label>Description</label><br>
         <input type="text" name="description"><br><br>
 
@@ -114,15 +129,14 @@
         <label>id_projet</label><br>
         <input type="text" name="id_projet"><br><br>
 
-        <label for="status" > Status </label>
+        <label for="status">Status</label><br>
+        <select id="status" name="status" required>
+            <option value="A faire">A faire</option>
+            <option value="En cours">En cours</option>
+            <option value="termine">termine</option>
+        </select><br><br>
 
-        <select  id="status" name="status" required>
-            <option value="fair">fair</option>
-            <option value="on cours">on cours</option>
-            <option value="terminer">terminer</option>
-    </select>
-
-        <button type="submit">Ajouter tache </button>
+        <button type="submit">Ajouter tache</button>
     </form>
 </div>
 </body>

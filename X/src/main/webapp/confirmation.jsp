@@ -22,30 +22,36 @@
 
     .sidebar {
         width: 250px;
-        background-color: #f9f871; /* Jaune */
+        background-color: #ed9bae; /* Jaune */
         padding: 20px;
         height: 100vh;
         position: fixed;
+        overflow-y: auto;
     }
 
     .sidebar h2 {
-        color: #3c763d; /* Vert */
+        color: #c30069; /* Vert */
         text-align: center;
+        margin-bottom: 30px;
     }
 
     .sidebar ul {
+        margin-top: 60px;
         list-style-type: none;
         padding: 0;
     }
 
     .sidebar ul li {
         margin: 15px 0;
+        text-align: center;
+        font-size: 20px;
+        font-weight: bold;
     }
 
     .sidebar ul li a {
-        color: #3c763d; /* Vert */
+        color: white; /* Vert */
         text-decoration: none;
-        font-size: 18px;
+        font-size: 16px;
     }
 
     .sidebar ul li a:hover {
@@ -63,7 +69,7 @@
     }
 
     h1 {
-        color: #3c763d; /* Vert */
+        color: #c30069; /* Vert */
     }
 
     .card {
@@ -82,7 +88,7 @@
 
     .card label {
         font-weight: bold;
-        color: #3c763d; /* Vert */
+        color: #c30069; /* Vert */
     }
 
     .card span {
@@ -93,10 +99,10 @@
 <body>
 <%@include file="header.jsp" %>
 <div class="sidebar">
-    <h2>Menu de Gestion</h2>
+    <h2 style="color: #c30069;margin-top: 40px">Menu de Gestion</h2>
     <ul>
-        <li><a href="afficher">Gestion des Projets</a></li>
-        <li><a href="home_tache">Gestion des Tâches</a></li>
+        <li style="background-color: #c30069;width: 100%" ><a href="afficher">Gestion des Projets</a></li>
+        <li ><a href="home_tache">Gestion des Tâches</a></li>
         <li><a href="afficher_ressource">Gestion des Ressources</a></li>
         <li><a href="home_fournisseur">Gestion des Fournisseurs</a></li>
     </ul>

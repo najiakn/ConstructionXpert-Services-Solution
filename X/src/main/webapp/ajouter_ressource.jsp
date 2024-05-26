@@ -20,30 +20,36 @@
 
         .sidebar {
             width: 250px;
-            background-color: #f9f871; /* Jaune */
+            background-color: #ed9bae; /* Jaune */
             padding: 20px;
             height: 100vh;
             position: fixed;
+            overflow-y: auto;
         }
 
         .sidebar h2 {
-            color: #3c763d; /* Vert */
+            color: #c30069; /* Vert */
             text-align: center;
+            margin-bottom: 30px;
         }
 
         .sidebar ul {
+            margin-top: 60px;
             list-style-type: none;
             padding: 0;
         }
 
         .sidebar ul li {
             margin: 15px 0;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
         }
 
         .sidebar ul li a {
-            color: #3c763d; /* Vert */
+            color: white; /* Vert */
             text-decoration: none;
-            font-size: 18px;
+            font-size: 16px;
         }
 
         .sidebar ul li a:hover {
@@ -57,11 +63,12 @@
         }
 
         h1 {
-            color: #3c763d; /* Vert */
+            color: #c30069; /* Vert */
+            text-align: center;
         }
 
         form label {
-            color: #3c763d; /* Vert */
+            color: rgba(97, 1, 49, 0.97); /* Vert */
             font-weight: bold;
         }
 
@@ -75,33 +82,33 @@
         }
 
         button {
-            background-color: #3c763d; /* Vert */
-            color: #ffffff;
+            background-color: rgba(205, 0, 102, 0.97); /* Vert */
+            color: white;
             padding: 10px 20px;
+            margin: 20px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
         }
 
         button:hover {
-            background-color: #2b542c;
+            background-color: rgba(85, 0, 42, 0.97);
         }
     </style>
 </head>
 <body>
 <div class="sidebar">
-    <h2>Menu de Gestion</h2>
+    <h2 style="color: #c30069;margin-top: 40px">Menu de Gestion</h2>
     <ul>
-        <li><a href="afficher">Gestion des Projets</a></li>
+        <li ><a href="afficher">Gestion des Projets</a></li>
         <li><a href="home_tache">Gestion des Tâches</a></li>
-        <li><a href="afficher_ressource">Gestion des Ressources</a></li>
+        <li style="background-color: #c30069;width: 100%"><a href="afficher_ressource">Gestion des Ressources</a></li>
         <li><a href="home_fournisseur">Gestion des Fournisseurs</a></li>
     </ul>
 </div>
 <div class="content">
-    <h1>Ajouter une tache </h1>
-    <form action="ajouter_ressource.do" method="post">
-
+    <h1 style="color: #c30069">Ajouter Ressource</h1>
+    <form action="ajouter_ressource.do" method="post" style="margin: 20px">
         <label>Nom</label><br>
         <input type="text" name="nom"><br><br>
 
@@ -117,8 +124,7 @@
         <label>idf</label><br>
         <input type="text" name="idf"><br><br>
 
-
-        <button type="submit">Ajouter Ressource </button>
+        <button type="submit">Ajouter Ressource</button>
     </form>
 </div>
 </body>

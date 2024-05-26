@@ -12,131 +12,196 @@
     <title>Page de Gestion</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<style>body {
-    display: flex;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    background-color: #ffffff;
-}
+<style>
+    body {
+        display: flex;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background-color: #ffffff;
+    }
 
-.sidebar {
-    width: 250px;
-    background-color: #f9f871; /* Jaune */
-    padding: 20px;
-    height: 100vh;
-    position: fixed;
-}
+    .sidebar {
+        width: 250px;
+        background-color: #ed9bae; /* Jaune */
+        padding: 20px;
+        height: 100vh;
+        position: fixed;
+        overflow-y: auto;
+    }
 
-.sidebar h2 {
-    color: #3c763d; /* Vert */
-    text-align: center;
-}
+    .sidebar h2 {
+        color: #c30069; /* Vert */
+        text-align: center;
+        margin-bottom: 30px;
+    }
 
-.sidebar ul {
-    list-style-type: none;
-    padding: 0;
-}
+    .sidebar ul {
+        margin-top: 60px;
+        list-style-type: none;
+        padding: 0;
+    }
 
-.sidebar ul li {
-    margin: 15px 0;
-}
+    .sidebar ul li {
+        margin: 15px 0;
+        text-align: center;
+        font-size: 20px;
+        font-weight: bold;
+    }
 
-.sidebar ul li a {
-    color: #3c763d; /* Vert */
-    text-decoration: none;
-    font-size: 18px;
-}
+    .sidebar ul li a {
+        color: white; /* Vert */
+        text-decoration: none;
+        font-size: 16px;
+    }
 
-.sidebar ul li a:hover {
-    text-decoration: underline;
-}
+    .sidebar ul li a:hover {
+        text-decoration: underline;
+    }
 
-.content {
-    margin-left: 270px;
-    padding: 20px;
-    width: calc(100% - 270px);
-}
+    .content {
+        margin-left: 270px;
+        padding: 20px;
+        width: calc(100% - 270px);
+    }
 
-h1 {
-    color: #3c763d; /* Vert */
-}
+    h1 {
+        color: #3c763d; /* Vert */
+        text-align: center;
+    }
 
-.btn-ajouter {
-    background-color: #3c763d; /* Vert */
-    color: #ffffff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
+    .btn-ajouter {
+        background-color: rgba(205, 0, 102, 0.97); /* Vert */
+        color: white;
+        padding: 10px 20px;
+        margin: 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
 
-.btn-ajouter:hover {
-    background-color: #2b542c;
-}
+    .btn-ajouter:hover {
+        background-color: rgba(85, 0, 42, 0.97);
+    }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px;
+    }
 
-table, th, td {
-    border: 1px solid #ddd;
-}
+    table, th, td {
+        border: 1px solid #ddd;
+    }
 
-th, td {
-    padding: 10px;
-    text-align: left;
-}
+    th, td {
+        padding: 10px;
+        text-align: left;
+    }
 
-th {
-    background-color: #f9f871; /* Jaune */
-    color: #3c763d; /* Vert */
-}
+    th {
+        background-color: #ed9bae; /* Jaune */
+        color: #c30069; /* Vert */
+    }
 
-tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
 
-.btn-supprimer {
-    background-color: #d9534f; /* Rouge */
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 3px;
-    text-decoration: none;
-}
+    .btn-supprimer {
+        background-color: #1d5bff; /* Rouge */
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        border-radius: 3px;
+        text-decoration: none;
+    }
 
-.btn-supprimer:hover {
-    background-color: #c9302c;
-}
+    .btn-supprimer:hover {
+        background-color: #051745;
+    }
 
-.btn-modifier {
-    background-color: #5bc0de; /* Bleu clair */
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 3px;
-    text-decoration: none;
-}
+    .btn-modifier {
+        background-color: #1d5bff; /* Bleu clair */
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        border-radius: 3px;
+        text-decoration: none;
+    }
 
-.btn-modifier:hover {
-    background-color: #31b0d5;
-}</style>
+    .btn-modifier:hover {
+        background-color: #051745;
+    }
+
+    .menu-btn {
+        display: none;
+        background-color: #c30069;
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        width: 100%;
+        text-align: center;
+        font-size: 20px;
+        margin-top: 20px;
+    }
+
+    @media (max-width: 768px) {
+        body {
+            flex-direction: column;
+        }
+
+        .sidebar {
+            width: 100%;
+            height: auto;
+            position: relative;
+            display: none;
+        }
+
+        .sidebar ul {
+            display: none;
+        }
+
+        .content {
+            margin-left: 0;
+            width: 100%;
+        }
+
+        .menu-btn {
+            display: block;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .sidebar ul li {
+            font-size: 16px;
+        }
+
+        .btn-ajouter {
+            font-size: 14px;
+            padding: 8px 16px;
+        }
+
+        table, th, td {
+            font-size: 12px;
+            padding: 4px;
+        }
+    }
+</style>
 <body>
 <div class="sidebar">
-    <h2>Menu de Gestion</h2>
+    <h2 style="color: #c30069;margin-top: 40px">Menu de Gestion</h2>
     <ul>
         <li><a href="afficher">Gestion des Projets</a></li>
         <li><a href="home_tache">Gestion des Tâches</a></li>
         <li><a href="afficher_ressource">Gestion des Ressources</a></li>
-        <li><a href="home_fournisseur">Gestion des Fournisseurs</a></li>
+        <li  style="background-color: #c30069;width: 100%"><a href="home_fournisseur">Gestion des Fournisseurs</a></li>
     </ul>
 </div>
 <div class="content">
-    <h1>Gestion des fournisseurs</h1>
+    <h1 style="color: #c30069">Gestion des Fournisseur</h1>
     <button class="btn-ajouter" onclick="window.location.href='ajouter_fournisseur.jsp'">Ajouter</button>
     <table>
         <thead>
@@ -164,5 +229,18 @@ tr:nth-child(even) {
         </tbody>
     </table>
 </div>
+<script>
+    function toggleSidebar() {
+        var sidebar = document.querySelector('.sidebar');
+        var sidebarUl = document.querySelector('.sidebar ul');
+        if (sidebar.style.display === 'block') {
+            sidebar.style.display = 'none';
+            sidebarUl.style.display = 'none';
+        } else {
+            sidebar.style.display = 'block';
+            sidebarUl.style.display = 'block';
+        }
+    }
+</script>
 </body>
 </html>

@@ -1,14 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: user
-  Date: 22/05/2024
-  Time: 18:26
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Ajouter un Projet</title>
     <link rel="stylesheet" href="styles.css">
     <style>
@@ -21,30 +16,36 @@
 
         .sidebar {
             width: 250px;
-            background-color: #f9f871; /* Jaune */
+            background-color: #ed9bae; /* Jaune */
             padding: 20px;
             height: 100vh;
             position: fixed;
+            overflow-y: auto;
         }
 
         .sidebar h2 {
-            color: #3c763d; /* Vert */
+            color: #c30069; /* Vert */
             text-align: center;
+            margin-bottom: 30px;
         }
 
         .sidebar ul {
+            margin-top: 60px;
             list-style-type: none;
             padding: 0;
         }
 
         .sidebar ul li {
             margin: 15px 0;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
         }
 
         .sidebar ul li a {
-            color: #3c763d; /* Vert */
+            color: white; /* Vert */
             text-decoration: none;
-            font-size: 18px;
+            font-size: 16px;
         }
 
         .sidebar ul li a:hover {
@@ -58,11 +59,12 @@
         }
 
         h1 {
-            color: #3c763d; /* Vert */
+            color: #c30069; /* Vert */
+            text-align: center;
         }
 
         form label {
-            color: #3c763d; /* Vert */
+            color: rgba(97, 1, 49, 0.97); /* Vert */
             font-weight: bold;
         }
 
@@ -76,31 +78,33 @@
         }
 
         button {
-            background-color: #3c763d; /* Vert */
-            color: #ffffff;
+            background-color: rgba(205, 0, 102, 0.97); /* Vert */
+            color: white;
             padding: 10px 20px;
+            margin: 20px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
         }
 
         button:hover {
-            background-color: #2b542c;
+            background-color: rgba(85, 0, 42, 0.97);
         }
     </style>
 </head>
 <body>
+<div class="menu-btn" onclick="toggleSidebar()">Menu</div>
 <div class="sidebar">
-    <h2>Menu de Gestion</h2>
+    <h2 style="color: #c30069;margin-top: 40px">Menu de Gestion</h2>
     <ul>
-        <li><a href="afficher">Gestion des Projets</a></li>
+        <li style="background-color: #c30069;width: 100%"><a href="afficher">Gestion des Projets</a></li>
         <li><a href="home_tache">Gestion des Tâches</a></li>
         <li><a href="afficher_ressource">Gestion des Ressources</a></li>
         <li><a href="home_fournisseur">Gestion des Fournisseurs</a></li>
     </ul>
 </div>
 <div class="content">
-    <h1>Ajouter un Projet</h1>
+    <h1 style="color: #c30069">Ajouter un Projet</h1>
     <form action="ajouter_projet.do" method="post">
         <label>Nom</label><br>
         <input type="text" name="nom_projet"><br><br>
@@ -119,6 +123,18 @@
 
         <button type="submit">Ajouter</button>
     </form>
-</div>
+</div><script>
+    function toggleSidebar() {
+        var sidebar = document.querySelector('.sidebar');
+        var sidebarUl = document.querySelector('.sidebar ul');
+        if (sidebar.style.display === 'block' || sidebar.style.display === '') {
+            sidebar.style.display = 'none';
+            sidebarUl.style.display = 'none';
+        } else {
+            sidebar.style.display = 'block';
+            sidebarUl.style.display = 'block';
+        }
+    }
+</script>
 </body>
 </html>
