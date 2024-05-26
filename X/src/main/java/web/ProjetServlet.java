@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import metier.fournisseur;
 import metier.projet;
+import metier.ressource;
 import metier.tache;
 
 import java.io.IOException;
@@ -21,12 +22,16 @@ public class ProjetServlet extends HttpServlet {
     private IprojetDao metier;
     private itacheDao metier_tache;
     private IfournisseurDao metier_fournisseur;
+    private IressourceDao metier_ressource;
+
 
     @Override
     public void init() throws ServletException {
         metier = new projet_imp();
         metier_tache = new tache_imp(); // Initialiser metier_tache
         metier_fournisseur = new fournisseur_imp();
+        metier_ressource = new ressource_imp();
+
     }
 
     @Override
@@ -208,9 +213,69 @@ public class ProjetServlet extends HttpServlet {
                 metier_fournisseur.supprimer(idf);
                 response.sendRedirect("home_fournisseur");
 
+            //----------------------------------Ressource--------------------------------
 
-            //-----------------------------Error
+//----------------------------------afficher ressource----------------------------------//
+
+        } else if (path.equals("/afficher_ressource")) {
+            RessourceModel modelr = new RessourceModel();
+            List<ressource> ressources = metier_ressource.afficher();
+            modelr.setRessources(ressources);
+            request.setAttribute("modelr", modelr);
+            request.getRequestDispatcher("ressource.jsp").forward(request, response);
+
         }
+            //------------------------------------------Ajouter Ressource-----------------------//
+
+        else if (path.equals("/ajouter_ressource")) {
+                request.getRequestDispatcher("ajouter_fournisseur.jsp").forward(request, response);
+            } else if (path.equals("/ajouter_ressource.do") && (request.getMethod().equals("POST"))) {
+                String nom = request.getParameter("nom");
+                String type = request.getParameter("type");
+                String quantite = request.getParameter("quantite");
+                int id_tache = Integer.parseInt(request.getParameter("id_tache"));
+                int id_fr = Integer.parseInt(request.getParameter("idf"));
+
+
+            ressource r = metier_ressource.ajouter(new ressource(nom, type,quantite,id_tache,id_fr));
+                request.setAttribute("ressource", r);
+                request.getRequestDispatcher("config_ressource.jsp").forward(request, response);
+
+
+        }
+        //----------------------------------------------------Modifier ressource-------------
+
+        else if (path.equals("/modifier_r.do")) {
+            int idr = Integer.parseInt(request.getParameter("idr"));
+            ressource r = metier_ressource.getRessources(idr);
+            request.setAttribute("ressource", r);
+            request.getRequestDispatcher("modifier_ressource.jsp").forward(request, response);
+        } else if (path.equals("/modifier_ressource.do") && (request.getMethod().equals("POST"))) {
+            int idr = Integer.parseInt(request.getParameter("idr"));
+            String nom = request.getParameter("nom");
+            String type = request.getParameter("type");
+            String quantite = request.getParameter("quantite");
+            int id_tache = Integer.parseInt(request.getParameter("id_tache"));
+            int id_fr = Integer.parseInt(request.getParameter("idf"));
+
+
+
+            ressource  r = new ressource(nom, type, quantite, id_tache,id_fr);
+            r.setIdr(idr);
+            metier_ressource.modifier(r);
+            request.setAttribute("ressource", r);
+            response.sendRedirect("afficher_ressource");
+
+        }
+        //-------------------supprimer ressource-------------------------
+        else if (path.equals("/supprimer_ressource.do")) {
+            int idr = Integer.parseInt(request.getParameter("idr"));
+            metier_ressource.supprimer(idr);
+            response.sendRedirect("afficher_ressource");
+        }
+
+            //-----------------------------Error---
+
         else {
             response.sendError(HttpServletResponse.SC_NOT_FOUND);
         }

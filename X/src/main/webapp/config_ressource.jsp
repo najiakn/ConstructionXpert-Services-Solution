@@ -91,7 +91,6 @@
     }
 </style>
 <body>
-<%@include file="header.jsp" %>
 <div class="sidebar">
     <h2>Menu de Gestion</h2>
     <ul>
@@ -103,25 +102,27 @@
 </div>
 <div class="content">
     <div class="card">
+
         <div>
-            <label>Nom :</label>
-            <span>${projet.nom_projet}</span>
+            <label>nom :</label>
+            <span>${ressource.nom}</span>
         </div>
         <div>
-            <label>Description :</label>
-            <span>${projet.description_projet}</span>
+            <label>Type:</label>
+            <span>${ressource.type}</span>
         </div>
         <div>
-            <label>Date de début :</label>
-            <span>${projet.date_debut}</span>
+            <label>Quantite</label>
+            <span>${ressource.quantite}</span>
+        </div>
+
+        <div>
+            <label>id_Tache</label>
+            <span>${ressource.id_tache}</span>
         </div>
         <div>
-            <label>Date de fin :</label>
-            <span>${projet.date_fin}</span>
-        </div>
-        <div>
-            <label>Budget :</label>
-            <span>${projet.budget}</span>
+            <label>id_fournisseur</label>
+            <span>${ressource.id_fr}</span>
         </div>
     </div>
 </div>

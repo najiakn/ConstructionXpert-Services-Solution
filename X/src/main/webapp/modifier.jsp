@@ -136,7 +136,7 @@
                                                                                                                              <ul>
     <li><a href="afficher">Gestion des Projets</a></li>
     <li><a href="home_tache">Gestion des Tâches</a></li>
-    <li><a href="#gestion-ressources">Gestion des Ressources</a></li>
+    <li><a href="afficher_ressource">Gestion des Ressources</a></li>
     <li><a href="home_fournisseur">Gestion des Fournisseurs</a></li>
   </ul>
 </div>

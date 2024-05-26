@@ -7,8 +7,9 @@ public class ressource {
     private String nom;
     private String type;
     private  String quantite;
-    private  int id_fr;
     private  int id_tache;
+
+    private  int id_fr;
 
     // creation les constructeurs
 
@@ -18,8 +19,19 @@ public class ressource {
         this.nom=nom;
         this.type=type;
         this.quantite=quantite;
-        this.id_fr=id_fr;
         this.id_tache=id_tache;
+        this.id_fr=id_fr;
+
+    }
+
+    public ressource( String nom, String type , String quantite, int id_tache, int id_fr){
+
+        this.nom=nom;
+        this.type=type;
+        this.quantite=quantite;
+        this.id_tache=id_tache;
+        this.id_fr=id_fr;
+
     }
 
     // creation Getters et setters

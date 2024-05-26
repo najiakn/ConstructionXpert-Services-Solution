@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Modifier Projet</title>
+    <title>Modifier Fournisseur</title>
     <link rel="stylesheet" href="styles.css">
     <style>
         .input-group {
@@ -142,53 +142,51 @@
 </div>
 
 <div class="content">
-    <h1>Modifier Tache</h1>
+    <h1>Modifier Ressource</h1>
     <div class="card">
-        <form action="modifier_tache.do" method="post">
+        <form action="modifier_ressource.do" method="post">
             <div class="input-group">
                 <div class="input-row">
-                    <label for="id_tache">ID</label>
-                    <input type="text" id="id_tache" name="id_tache" value="${tache.id_tache}" readonly>
+                    <label for="idr">ID</label>
+                    <input type="text" id="idr" name="idr" value="${ressource.idr}" readonly>
                 </div>
-//
-                <div class="input-row">
-                    <label for="description">Description</label>
-                    <input type="text" id="description" name="description" value="${tache.description}">
-                </div>
-            </div>
-
-            <div class="input-group">
 
                 <div class="input-row">
-                    <label for="date_debut">Date de début</label>
-                    <input type="date" id="date_debut" name="date_debut" value="${tache.date_debut}">
+                    <label for="nom">Nom</label>
+                    <input type="text" id="nom" name="nom" value="${ressource.nom}">
                 </div>
-                <div class="input-row">
-                <label for="date_fin">Date de fin</label>
-                <input type="date" id="date_fin" name="date_fin" value="${tache.date_fin}">
-            </div>
             </div>
 
             <div class="input-group">
 
                 <div class="input-row">
-                    <label for="status" > Status </label>
-
-                    <select  id="status" name="status" required>
-                        <option value="fair">fair</option>
-                        <option value="on cours">on cours</option>
-                        <option value="terminer">terminer</option>
-                    </select>
+                    <label for="type">Type</label>
+                    <input type="text" id="type" name="type" value="${ressource.type}">
                 </div>
+                 <div class="input-row">
+                <label for="quantite">Qauntite</label>
+                <input type="text" id="quantite" name="quantite" value="${ressource.quantite}">
+            </div>
+            </div>
 
+            <div class="input-group">
 
                 <div class="input-row">
-                    <label for="id_projet">id_projet</label>
-                    <input type="text" id="id_projet" name="id_projet" value="${tache.id_projet}">
+                    <label for="type">Id_tache</label>
+                    <input type="text" id="id_tach" name="id_tache" value="${ressource.id_tache}">
+                </div>
+                <div class="input-row">
+                    <label for="idf">Id fournisseur</label>
+                    <input type="text" id="idf" name="idf" value="${ressource.id_fr}">
                 </div>
             </div>
 
-            <button type="submit"  onclick="window.location.href='home_tache'">Modifier</button>
+
+
+
+
+
+            <button type="submit"  onclick="window.location.href='afficher_ressource'">Modifier</button>
         </form>
     </div>
 </div>

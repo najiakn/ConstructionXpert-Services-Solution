@@ -9,8 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Ajouter un Projet</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Ajouter une tache </title>
     <style>
         body {
             display: flex;
@@ -100,24 +99,26 @@
     </ul>
 </div>
 <div class="content">
-    <h1>Ajouter un Projet</h1>
-    <form action="ajouter_projet.do" method="post">
+    <h1>Ajouter une tache </h1>
+    <form action="ajouter_ressource.do" method="post">
+
         <label>Nom</label><br>
-        <input type="text" name="nom_projet"><br><br>
+        <input type="text" name="nom"><br><br>
 
-        <label>Description</label><br>
-        <input type="text" name="description"><br><br>
+        <label>Type</label><br>
+        <input type="text" name="type"><br><br>
 
-        <label>Date de début</label><br>
-        <input type="date" name="date_debut"><br><br>
+        <label>Quantite</label><br>
+        <input type="text" name="quantite"><br><br>
 
-        <label>Date de fin</label><br>
-        <input type="date" name="date_fin"><br><br>
+        <label>Id_tache</label><br>
+        <input type="text" name="id_tache"><br><br>
 
-        <label>Budget</label><br>
-        <input type="text" name="budget"><br><br>
+        <label>idf</label><br>
+        <input type="text" name="idf"><br><br>
 
-        <button type="submit">Ajouter</button>
+
+        <button type="submit">Ajouter Ressource </button>
     </form>
 </div>
 </body>
