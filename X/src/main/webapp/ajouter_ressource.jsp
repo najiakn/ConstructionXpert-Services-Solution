@@ -110,19 +110,19 @@
     <h1 style="color: #c30069">Ajouter Ressource</h1>
     <form action="ajouter_ressource.do" method="post" style="margin: 20px">
         <label>Nom</label><br>
-        <input type="text" name="nom"><br><br>
+        <input type="text" name="nom" required><br><br>
 
         <label>Type</label><br>
-        <input type="text" name="type"><br><br>
+        <input type="text" name="type" required><br><br>
 
         <label>Quantite</label><br>
-        <input type="text" name="quantite"><br><br>
+        <input type="text" name="quantite" required><br><br>
 
         <label>Id_tache</label><br>
-        <input type="text" name="id_tache"><br><br>
+        <input type="text" name="id_tache" required><br><br>
 
         <label>idf</label><br>
-        <input type="text" name="idf"><br><br>
+        <input type="text" name="idf" required><br><br>
 
         <button type="submit">Ajouter Ressource</button>
     </form>

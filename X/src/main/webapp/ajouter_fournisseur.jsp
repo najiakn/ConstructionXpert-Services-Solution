@@ -107,13 +107,13 @@
   <h1 style="color: #c30069">Ajouter une tache</h1>
   <form action="ajouter_fournisseur.do" method="post">
     <label>nom</label><br>
-    <input type="text" name="nom"><br><br>
+    <input type="text" name="nom" required><br><br>
 
     <label>mail</label><br>
-    <input type="text" name="mail"><br><br>
+    <input type="text" name="mail" required><br><br>
 
     <label>telephone</label><br>
-    <input type="text" name="tele"><br><br>
+    <input type="text" name="tele" required><br><br>
 
     <button type="submit">Ajouter fournisseur</button>
   </form>

@@ -107,19 +107,19 @@
     <h1 style="color: #c30069">Ajouter un Projet</h1>
     <form action="ajouter_projet.do" method="post">
         <label>Nom</label><br>
-        <input type="text" name="nom_projet"><br><br>
+        <input type="text" name="nom_projet" required><br><br>
 
         <label>Description</label><br>
-        <input type="text" name="description"><br><br>
+        <input type="text" name="description" required><br><br>
 
         <label>Date de début</label><br>
-        <input type="date" name="date_debut"><br><br>
+        <input type="date" name="date_debut" required><br><br>
 
         <label>Date de fin</label><br>
-        <input type="date" name="date_fin"><br><br>
+        <input type="date" name="date_fin" required><br><br>
 
         <label>Budget</label><br>
-        <input type="text" name="budget"><br><br>
+        <input type="text" name="budget" required><br><br>
 
         <button type="submit">Ajouter</button>
     </form>

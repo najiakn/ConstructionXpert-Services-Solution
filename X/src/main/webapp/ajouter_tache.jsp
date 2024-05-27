@@ -118,16 +118,16 @@
     <h1 style="color: #c30069">Ajouter une tache</h1>
     <form action="ajouter_tache.do" method="post" style="margin: 20px">
         <label>Description</label><br>
-        <input type="text" name="description"><br><br>
+        <input type="text" name="description" required><br><br>
 
         <label>Date de début</label><br>
-        <input type="date" name="date_debut"><br><br>
+        <input type="date" name="date_debut" required><br><br>
 
         <label>Date de fin</label><br>
-        <input type="date" name="date_fin"><br><br>
+        <input type="date" name="date_fin" required><br><br>
 
         <label>id_projet</label><br>
-        <input type="text" name="id_projet"><br><br>
+        <input type="text" name="id_projet" required><br><br>
 
         <label for="status">Status</label><br>
         <select id="status" name="status" required>
