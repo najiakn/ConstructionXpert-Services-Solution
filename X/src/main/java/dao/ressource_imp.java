@@ -16,6 +16,7 @@ public class ressource_imp  implements  IressourceDao{
     private Connection connection;
 
     public ressource_imp() {
+
         connection = SingletonConnection.getConnection();
     }
 
